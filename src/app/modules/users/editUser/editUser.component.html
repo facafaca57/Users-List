@@ -18,7 +18,7 @@
       <input required name="last_name" formControlName="last_name" type="text">
 
       <label>Email*</label>
-      <input required name="email" formControlName="email" class="i-email" type="email">
+      <input required name="email" formControlName="email" class="i-email" type="email" emailValidation>
       <div class="errors"
           [class.e-invalid]="userForm.get('email')?.invalid && userForm.get('email')?.touched"
       >Please enter valid email address</div>

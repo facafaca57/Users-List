@@ -7,13 +7,15 @@ import { CoreModule } from './core/core.module';
 import { UsersModule } from './modules/users/users.module';
 import { NotFoundComponent } from './core/components/not-found/not-found.component';
 import { SharedModule } from './shared/shared.module';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { RequestInterceptor } from './shared/interceptors/request.interceptor';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthCheckGuard } from './shared/guards/auth-check.guard';
+import { NoAccessComponent } from './core/components/no-access/no-access.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NoAccessComponent
   ],
   imports: [
     CoreModule,
@@ -24,10 +26,6 @@ import { RequestInterceptor } from './shared/interceptors/request.interceptor';
     AppRoutingModule
   ],
   bootstrap: [AppComponent],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: RequestInterceptor,
-    multi: true,
-  }]
+  providers: [AuthCheckGuard]
 })
 export class AppModule { }
