@@ -8,11 +8,15 @@ import { UserResolver } from './resolver/user.resolver';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PasswordValidation } from 'src/app/shared/directives/passwords.directive';
+import { EmailValidation } from 'src/app/shared/directives/email.directive';
+import { AuthCheckGuard } from 'src/app/shared/guards/auth-check.guard';
+import { NoAccessComponent } from 'src/app/core/components/no-access/no-access.component';
 
 const routes: Routes = [
   {
     path: '',
     component: UsersComponent,
+    canActivateChild: [AuthCheckGuard],
     children: [
       {
         path: 'new',
@@ -26,6 +30,10 @@ const routes: Routes = [
         }
       }
     ]
+  },
+  {
+    path: '403',
+    component: NoAccessComponent
   },
   {
     path: '**',
@@ -42,6 +50,11 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   exports: [RouterModule],
-  declarations: [ UsersComponent, EditUserComponent, PasswordValidation ]
+  declarations: [
+    UsersComponent,
+    EditUserComponent,
+    PasswordValidation,
+    EmailValidation
+  ]
 })
 export class UsersModule { }

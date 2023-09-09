@@ -37,7 +37,7 @@ export class EditUserComponent implements OnInit {
       username: ['', [Validators.required]],
       first_name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required]],
       user_type: ['Driver', [Validators.required]],
       password: ['', [Validators.required]],
       repeat_password: ['', Validators.required],
