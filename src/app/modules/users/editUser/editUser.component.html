@@ -1,0 +1,50 @@
+<div class="user">
+  <div class="close" routerLink="/">
+    <img class="close-img" src="assets/img/close.svg" alt="">
+  </div>
+
+  <p class="title">{{ !isNew ? user.first_name + ' ' + user.last_name: 'Create new user'}}</p>
+
+  <div class="user-detail">
+    <form (ngSubmit)="onSubmit()" [formGroup]="userForm">
+
+      <label>Username*</label>
+      <input required name="username" formControlName="username" type="text" [disabled]="true">
+
+      <label>First name*</label>
+      <input required name="first_name"formControlName="first_name" type="text">
+
+      <label>Last name*</label>
+      <input required name="last_name" formControlName="last_name" type="text">
+
+      <label>Email*</label>
+      <input required name="email" formControlName="email" class="i-email" type="email">
+      <div class="errors"
+          [class.e-invalid]="userForm.get('email')?.invalid && userForm.get('email')?.touched"
+      >Please enter valid email address</div>
+
+      <label>Type*</label>
+      <select #type name="type" required formControlName="user_type">
+        <option value="Admin">Admin</option>
+        <option value="Driver">Driver</option>
+      </select>
+
+      <label>Password*</label>
+      <input required formControlName="password" type="password" passwordValidation>
+      <div class="errors"
+        [class.e-invalid]="userForm.get('password')?.invalid && userForm.get('password')?.touched"
+      >Min length 8. at least one number and one letter</div>
+
+      <label>Repeat password*</label>
+      <input required formControlName="repeat_password" type="password" passwordValidation>
+      <div class="errors"
+        [class.e-invalid]="userForm.get('repeat_password')?.errors?.noMatch && userForm.get('repeat_password')?.touched"
+      >Passwords does not match</div>
+
+      <div class="actions">
+        <button class="b-delete" type="button" *ngIf="!isNew" (click)="deleteUser()">Delete</button>
+        <button class="b-save" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+.user {
+  background: #FFFFFF;
+  box-shadow: 0px 0px 30px #523F690D;
+  border: 1px solid #EBEDF3;
+  border-radius: 6px;
+  font: 13px/16px Helvetica;
+  position: relative;
+  padding: 26px;
+
+  p {
+    text-align: left;
+    font: bold 16px/19px Helvetica;
+    letter-spacing: 0px;
+    color: #3F4254;
+    margin: 0;
+  }
+
+  .user-detail {
+    margin-top: 30px;
+    label {
+      text-align: left;
+      letter-spacing: 0px;
+      color: #3F4254;
+    }
+    input, select {
+      padding: 0 16px;
+      width: -webkit-fill-available;
+      margin: 2px 0 14px;
+      height: 46px;
+      background: #F3F6F9 0% 0% no-repeat padding-box;
+      border-radius: 6px;
+      border: none;
+      color: #3F4254;
+
+      &:focus-visible {
+        outline: none;
+      }
+      &.i-email {
+        background-image: url('/assets/img/email.svg');
+        background-position: 16px;
+        padding-left: 46px;
+      }
+      option {
+        font-size: 16px;
+      }
+    }
+
+    input.ng-invalid.ng-touched {
+      border: 1px solid #EF7DA0 !important;
+    }
+
+    .errors {
+      margin-bottom: 6px;
+      color: #EF7DA0;
+      margin-top: -14px;
+      text-align: start;
+      display: none;
+      &.e-invalid {
+        display: block
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 18px;
+
+      button {
+        width: 120px;
+        height: 46px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        color: #FFFFFF;
+        &.b-save {
+          background: #2E8FF0;
+          box-shadow: 0px 5px 8px #2E8FF029;
+        }
+        &.b-delete {
+          background: #F44682;
+          box-shadow: 0px 5px 8px #F4468229;
+        }
+      }
+
+    }
+  }
+
+}
+
+.close {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  cursor: pointer;
+}

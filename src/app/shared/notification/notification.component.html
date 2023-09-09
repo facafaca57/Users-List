@@ -1,0 +1,10 @@
+<div class="notification">
+  <div *ngIf="type == 'error'; else success" class="ntf ntf-error" [class.show]="show">
+    <p>{{ message }}</p>
+  </div>
+  <ng-template #success>
+    <div class="ntf ntf-success" [class.show]="show">
+      <p>{{ message }}</p>
+    </div>
+  </ng-template>
+</div>
